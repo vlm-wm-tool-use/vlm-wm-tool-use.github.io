@@ -44,21 +44,14 @@
 
                         <div class="is-size-5 publication-authors">
                             <span class="author-block">
-                                <a target="_blank" style="font-size: 125%;">
-                                    Anonymous Author(s)</a>
+                                Anonymous Author(s)
+                                <br>
+                                In Submission to Conference on Robot Learning (CoRL) 2026
                                 <br>
                             </span>
                         </div>
     
                         <br>
-                        
-                        <div style="text-align: center;">
-                            <h3 class="title is-4 conference-authors">
-                                <a target="_blank" href="https://www.corl.org/home">
-                                    In Submission to Conference on Robot Learning (CoRL) 2026
-                                </a>
-                            </h3>
-                        </div>
 
                         <div class="column has-text-centered">
                             <div class="publication-links">
@@ -133,7 +126,7 @@
                     <figure style="max-width: 1300px; margin: 0 auto 5rem;">
                         <img src="assets/method_v4.png" alt="Method overview" width="100%" style="border-radius: 5px;">
                         <figcaption class="content has-text-justified" style="font-size: 110%; margin-top: 1rem;">
-                            A VLM proposes visual plans from the task instruction and initial observation. At train time, the world model rolls out candidate plans and selects high-reward, high-uncertainty plans for execution; the executed outcomes help the world model learn task dynamics and update its uncertainty estimate. At test time, the learned world model selects the best plan based on high predicted reward and low uncertainty.
+                            A VLM proposes visual plans from the task instruction and initial observation. At train time, the world model rolls out candidate plans and selects high-reward, high-uncertainty plans for execution; the executed outcomes help the world model learn task dynamics and its uncertainty estimate. At test time, the learned world model selects the best plan based on high predicted reward and low uncertainty.
                         </figcaption>
                     </figure>
                     <h2 class="title is-3">World Model Rollout Selection</h2>
@@ -144,6 +137,124 @@
                         </figcaption>
                     </figure>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results -->
+    <section class="section" style="padding-top: 0">
+        <div class="container is-fluid" style="max-width: 1300px;">
+            <h2 class="title is-3 has-text-centered">Results</h2>
+
+            <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Successes</h3>
+
+            <div class="results-media-row" style="margin-top: 1.5rem;">
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/ball_in_ring_success.mp4" type="video/mp4">
+                    </video>
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Ball in Ring (10x)</figcaption>
+                </figure>
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/cut_dough_success.mp4" type="video/mp4">
+                    </video>
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Cut Dough (5x)</figcaption>
+                </figure>
+            </div>
+
+            <div class="results-media-row" style="margin-top: 1.5rem;">
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task02_success.gif" alt="Reach success" class="result-gif">
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Reach</figcaption>
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task03_success.gif" alt="Flatten dough success" class="result-gif">
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Flatten Dough</figcaption>
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task07_success.gif" alt="Lift bowl success" class="result-gif">
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Lift Bowl</figcaption>
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task08_success.gif" alt="Cut dough success" class="result-gif">
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Cut Dough (Simulation)</figcaption>
+                </figure>
+            </div>
+
+            <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Outcomes from Selected VLM Plans</h3>
+
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">Ball in Ring (10x)</p>
+            <div class="results-media-row">
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/ball_in_ring_demo_suboptimal.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/ball_in_ring_demo_fail.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/ball_in_ring_demo_fail2.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Cut Dough (5x)</p>
+            <div class="results-media-row">
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/cut_dough_suboptimal.mp4" type="video/mp4">
+                    </video>
+                </figure>
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/cut_dough_fail.mp4" type="video/mp4">
+                    </video>
+                </figure>
+            </div>
+
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Reach</p>
+            <div class="results-media-row">
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task02_suboptimal.gif" alt="Reach suboptimal" class="result-gif">
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task02_suboptimal2.gif" alt="Reach suboptimal 2" class="result-gif">
+                </figure>
+            </div>
+
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Flatten Dough</p>
+            <div class="results-media-row">
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task03_demo_suboptimal.gif" alt="Flatten dough suboptimal" class="result-gif">
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task03_demo_fail.gif" alt="Flatten dough failure" class="result-gif">
+                </figure>
+            </div>
+
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Lift Bowl</p>
+            <div class="results-media-row">
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task07_demo_suboptimal.gif" alt="Lift bowl suboptimal" class="result-gif">
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task07_demo_fail.gif" alt="Lift bowl failure" class="result-gif">
+                </figure>
+            </div>
+
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Cut Dough (Simulation)</p>
+            <div class="results-media-row">
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task08_demo_suboptimal.gif" alt="Cut dough suboptimal" class="result-gif">
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task08_demo_fail.gif" alt="Cut dough failure" class="result-gif">
+                </figure>
             </div>
         </div>
     </section>

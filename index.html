@@ -38,8 +38,8 @@
 
 
                         <h1 class="title is-1 publication-title">
-                            <span>Self-Supervised Learning of Uncertainty-Aware</span><br>
-                            <span>Action-Conditioned World Models for Tool Use Manipulation</span>
+                            <span class="title-line">Uncertainty-Guided Adaptation of World&nbsp;Models</span><br>
+                            <span class="title-line">from VLM Plans for Robotic Tool Use</span>
                         </h1>
 
                         <div class="is-size-5 publication-authors">
@@ -101,13 +101,12 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p style="font-size: 125%">
-                            Teaching robots to use previously unseen tools requires both high-level semantic reasoning about how a tool should be used and low-level physical reasoning about how interactions will unfold.
-                            Recent vision-language planning methods provide strong semantic priors, while visual world models offer a way to evaluate candidate actions through imagined rollouts; however, existing approaches rely on improving the planner or policy while assuming the world model to be correct.
-                            Our key idea is to learn an <span style="font-weight: bold;">action-conditioned</span>, <span style="font-weight: bold;">uncertainty-aware</span> world model tailored to the task of interest by bootstrapping from a prior model and VLM-generated plans.
-                            At train time, we select a small number of VLM plans for execution based on the expected reward and the uncertainty estimate from the world model.
-                            The observed outcomes of these executions are used to learn a task-focused world model and its uncertainty estimate.
-                            At test time, this uncertainty-aware world model is used to select the best VLM-proposed plan for execution.
-                            We show that this self-supervised method of learning a task-focused world model enables success on unseen tool-use manipulation tasks, improves over ablations without uncertainty awareness, and outperforms end-to-end policy learning baselines. 
+                            Teaching robots to use previously unseen tools requires both high-level semantic reasoning about how a tool should be used and low-level physical reasoning about how contact-rich interactions will unfold. Vision-language model planners provide strong semantic priors for proposing tool-use strategies, while visual world models can evaluate candidate actions through imagined rollouts. However, existing approaches often improve the planner, policy, or search procedure while treating the world model as fixed, which can be unreliable for novel tools with unfamiliar dynamics.
+                            We propose a self-supervised framework for adapting an action-conditioned visual world model to a new tool-use task using VLM-proposed plans and their executed outcomes.
+                            At training time, the VLM proposes candidate gripper-centric plans, and we select informative trajectories for execution by choosing plans with both high predicted reward and high model uncertainty.
+                            These executions, including both successes and failures, provide interaction data for finetuning the world model.
+                            At test time, the adapted world model selects the VLM-proposed plan with high predicted reward and low estimated uncertainty.
+                            We show that this self-supervised framework enables success on unseen tool-use manipulation tasks, improves over ablations without uncertainty-guided selection, and outperforms end-to-end policy learning baselines.
                         </p>
 
                         </p>
@@ -147,6 +146,9 @@
             <h2 class="title is-3 has-text-centered">Results</h2>
 
             <h3 class="title is-4 has-text-centered" style="margin-top: 2rem;">Successes</h3>
+            <p class="subtitle is-5 has-text-centered results-text" style="margin-top: 0.5rem;">
+                These videos show the successful outcomes of the selected VLM plans at test time.
+            </p>
 
             <div class="results-media-row" style="margin-top: 1.5rem;">
                 <figure class="has-text-centered">
@@ -161,13 +163,15 @@
                     </video>
                     <figcaption class="is-size-6" style="margin-top: 0.5rem;">Cut Dough (5x)</figcaption>
                 </figure>
+                <figure class="has-text-centered">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/reach_success.mp4" type="video/mp4">
+                    </video>
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Reach (10x)</figcaption>
+                </figure>
             </div>
 
             <div class="results-media-row" style="margin-top: 1.5rem;">
-                <figure class="has-text-centered">
-                    <img src="assets/videos/task02_success.gif" alt="Reach success" class="result-gif">
-                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Reach</figcaption>
-                </figure>
                 <figure class="has-text-centered">
                     <img src="assets/videos/task03_success.gif" alt="Flatten dough success" class="result-gif">
                     <figcaption class="is-size-6" style="margin-top: 0.5rem;">Flatten Dough</figcaption>
@@ -180,9 +184,18 @@
                     <img src="assets/videos/task08_success.gif" alt="Cut dough success" class="result-gif">
                     <figcaption class="is-size-6" style="margin-top: 0.5rem;">Cut Dough (Simulation)</figcaption>
                 </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task02_success.gif" alt="Reach success" class="result-gif">
+                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Reach</figcaption>
+                </figure>
             </div>
 
-            <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Outcomes from Selected VLM Plans</h3>
+            <h3 class="title is-4 has-text-centered" style="margin-top: 3rem;">Outcomes at Training Time</h3>
+            <p class="subtitle is-5 has-text-centered results-text" style="margin-top: 0.5rem;">
+                Our framework is able to learn from both successful and unsuccessful outcomes of executing VLM plans selected at training time.
+                These outcomes are used to improve the world model so that it can select the best plan at test time.
+                These videos show examples of failed or suboptimal outcomes from training time.
+            </p>
 
             <p class="subtitle is-5 has-text-centered" style="margin-top: 1.5rem;">Ball in Ring (10x)</p>
             <div class="results-media-row">
@@ -217,13 +230,17 @@
                 </figure>
             </div>
 
-            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Reach</p>
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Reach (10x)</p>
             <div class="results-media-row">
                 <figure class="has-text-centered">
-                    <img src="assets/videos/task02_suboptimal.gif" alt="Reach suboptimal" class="result-gif">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/reach_fail.mp4" type="video/mp4">
+                    </video>
                 </figure>
                 <figure class="has-text-centered">
-                    <img src="assets/videos/task02_suboptimal2.gif" alt="Reach suboptimal 2" class="result-gif">
+                    <video autoplay controls muted loop playsinline class="result-video">
+                        <source src="assets/videos/reach_fail2.mp4" type="video/mp4">
+                    </video>
                 </figure>
             </div>
 
@@ -254,6 +271,16 @@
                 </figure>
                 <figure class="has-text-centered">
                     <img src="assets/videos/task08_demo_fail.gif" alt="Cut dough failure" class="result-gif">
+                </figure>
+            </div>
+
+            <p class="subtitle is-5 has-text-centered" style="margin-top: 2rem;">Reach (Simulation)</p>
+            <div class="results-media-row">
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task02_suboptimal.gif" alt="Task 02 outcome 1" class="result-gif">
+                </figure>
+                <figure class="has-text-centered">
+                    <img src="assets/videos/task02_suboptimal2.gif" alt="Task 02 outcome 2" class="result-gif">
                 </figure>
             </div>
         </div>

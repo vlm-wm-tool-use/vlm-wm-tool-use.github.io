@@ -204,6 +204,108 @@ body {
     margin-right: auto;
 }
 
+.training-outcomes-carousel {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, 1fr) 3rem;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 1300px;
+    margin: 1.5rem auto 0;
+}
+
+.training-outcomes-scroller {
+    display: flex;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding: 0.25rem 0;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.training-outcomes-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.training-outcome-panel {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    padding: 0.25rem;
+}
+
+.training-outcome-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid #dbdbdb;
+    border-radius: 999px;
+    background: #fff;
+    color: #363636;
+    cursor: pointer;
+    font-size: 2.25rem;
+    line-height: 1;
+}
+
+.training-outcome-arrow:hover,
+.training-outcome-arrow:focus {
+    border-color: #9a9a9a;
+    color: #000;
+}
+
+.training-outcome-arrow:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+.training-outcome-panel .title {
+    margin-bottom: 1rem;
+}
+
+.training-outcome-media {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.training-outcome-video {
+    display: block;
+    width: min(31vw, 320px);
+    min-width: 240px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.training-outcome-gif {
+    width: 256px;
+    height: 256px;
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .training-outcomes-carousel {
+        grid-template-columns: 2.5rem minmax(0, 1fr) 2.5rem;
+        gap: 0.5rem;
+    }
+
+    .training-outcome-arrow {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 2rem;
+    }
+
+    .training-outcome-video,
+    .training-outcome-gif {
+        width: 100%;
+        min-width: 0;
+    }
+}
+
 
 .interpolation-panel {
     background: #f5f5f5;

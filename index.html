@@ -83,16 +83,14 @@
         </div>
     </section>
 
-    <!-- Teaser Figure -->
+    <!-- Overview Video -->
     <section class="section" style="padding: 0">
         <div class="container is-fluid">
-            <!-- Abstract. -->
             <div class="columns is-centered has-text-centered">
                 <figure style="max-width: 1300px; margin: 0 auto;">
-                    <img src="assets/teaser_v6.png" alt="Teaser figure" width="100%" style="border-radius: 5px;">
-                    <figcaption class="content has-text-justified" style="font-size: 110%; margin-top: 1rem;">
-                        Our method solves unseen tool manipulation tasks by learning the dynamics of a specific task. At training time, the VLM planner proposes plans that the robot can selectively execute to generate data for learning the world model; in turn, the world model estimates uncertainty to guide the robot to collect informative trajectories. At test time, the world model influences selection of the best plan for execution.
-                    </figcaption>
+                    <video autoplay controls muted loop playsinline width="100%" style="border-radius: 5px;">
+                        <source src="assets/overview_video.m4v" type="video/mp4">
+                    </video>
                 </figure>
             </div>
         </div>
@@ -106,14 +104,7 @@
                     <h2 class="title is-3">Abstract</h2>
                     <div class="content has-text-justified">
                         <p style="font-size: 125%">
-                            Teaching robots to use previously unseen tools requires both high-level semantic reasoning about how a tool should be used and low-level physical reasoning about how contact-rich interactions will unfold. Vision-language model planners provide strong semantic priors for proposing tool-use strategies, while visual world models can evaluate candidate actions through imagined rollouts. However, existing approaches often improve the planner, policy, or search procedure while treating the world model as fixed, which can be unreliable for novel tools with unfamiliar dynamics.
-                            We propose a self-supervised framework for adapting an action-conditioned visual world model to a new tool-use task using VLM-proposed plans and their executed outcomes.
-                            At training time, the VLM proposes candidate gripper-centric plans, and we select informative trajectories for execution by choosing plans with both high predicted reward and high model uncertainty.
-                            These executions, including both successes and failures, provide interaction data for finetuning the world model.
-                            At test time, the adapted world model selects the VLM-proposed plan with high predicted reward and low estimated uncertainty.
-                            We show that this self-supervised framework enables success on unseen tool-use manipulation tasks, improves over ablations without uncertainty-guided selection, and outperforms end-to-end policy learning baselines.
-                        </p>
-
+                            Teaching robots to use previously unseen tools requires both high-level semantic reasoning about how a tool should be used and low-level physical reasoning about how contact-rich interactions will unfold. Vision-language model planners provide strong semantic priors for proposing tool-use strategies, while visual world models can evaluate candidate actions through imagined rollouts. However, existing approaches often improve the planner, policy, or search procedure while treating the world model as fixed, which can be unreliable for novel tools with unfamiliar dynamics. We propose a self-supervised framework for adapting an action-conditioned visual world model to a new tool-use task using VLM-proposed plans and their executed outcomes. At training time, the VLM proposes candidate gripper-centric plans, and we select informative trajectories for execution by choosing plans with both high predicted reward and high model uncertainty. These executions, including both successes and failures, provide interaction data for fine-tuning the world model. At test time, the adapted world model selects the VLM-proposed plan with high predicted reward and low estimated uncertainty. We show that this self-supervised framework enables success on unseen tool-use manipulation tasks, improves over ablations without uncertainty-guided selection, and outperforms end-to-end policy learning baselines.
                         </p>
                     </div>
                 </div>
@@ -164,10 +155,6 @@
                 <figure class="has-text-centered">
                     <img src="assets/videos/task08_success.gif" alt="Cut dough success" class="result-gif">
                     <figcaption class="is-size-6" style="margin-top: 0.5rem;">Cut Dough</figcaption>
-                </figure>
-                <figure class="has-text-centered">
-                    <img src="assets/videos/task02_success.gif" alt="Reach success" class="result-gif">
-                    <figcaption class="is-size-6" style="margin-top: 0.5rem;">Reach</figcaption>
                 </figure>
             </div>
 
@@ -245,14 +232,6 @@
                             <img src="assets/videos/task08_demo_fail.gif" alt="Cut dough failure" class="training-outcome-gif">
                         </div>
                     </article>
-
-                    <article class="training-outcome-panel">
-                        <h4 class="title is-5 has-text-centered">Reach (Simulation)</h4>
-                        <div class="training-outcome-media">
-                            <img src="assets/videos/task02_suboptimal.gif" alt="Reach simulation outcome 1" class="training-outcome-gif">
-                            <img src="assets/videos/task02_suboptimal2.gif" alt="Reach simulation outcome 2" class="training-outcome-gif">
-                        </div>
-                    </article>
                 </div>
                 <button class="training-outcome-arrow training-outcome-arrow-right" type="button" aria-label="Next training outcome" data-training-outcomes-next>
                     <span aria-hidden="true">&rsaquo;</span>
@@ -303,6 +282,20 @@
                         <figcaption class="content has-text-justified" style="font-size: 110%; margin-top: 1rem;">
                             <b>Real world results.</b> We report success rates of our method after using 20 total executed VLM plans.
                         </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualitative Results -->
+    <section class="section" style="padding-top: 0">
+        <div class="container is-fluid">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Qualitative Results</h2>
+                    <figure style="max-width: 1300px; margin: 0 auto;">
+                        <img src="assets/rollouts.png" alt="World model rollouts across tasks" width="100%" style="border-radius: 5px;">
                     </figure>
                 </div>
             </div>
